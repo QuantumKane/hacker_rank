@@ -18,3 +18,28 @@ WHERE countrycode = 'USA'
 
 SELECT *
 FROM city;
+
+# 4. Query all columns for a city in CITY with the ID 1661
+
+SELECT *
+FROM city
+WHERE id = 1661;
+
+# 5. Query all attributes of every Japanese city in the CITY table
+
+SELECT *
+FROM city
+WHERE countrycode = 'JPN';
+
+# 6. Query the names of all the Japanese cities in the CITY table
+
+SELECT name
+FROM city
+WHERE countrycode = 'JPN';
+
+# 7. Query a list of CITY and STATE from the STATION table
+
+SELECT city, state
+FROM station;
+
+# 8. Query a list of CITY names from STATION for cities that have an even ID number
