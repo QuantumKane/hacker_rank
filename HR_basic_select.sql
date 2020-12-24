@@ -53,4 +53,27 @@ WHERE mod(id, 2) = 0;
 SELECT COUNT(city) - COUNT(DISTINCT city)
 FROM station;
 
-# 10. 
+# 10. Query the two cities in STATION with the shortest and longest CITY names, as well as their respective lengths 
+
+SELECT city, LENGTH(city) 
+FROM station
+ORDER BY LENGTH(city), city ASC
+LIMIT 1;
+
+SELECT city, LENGTH(city) 
+FROM station
+ORDER BY LENGTH(city) DESC
+LIMIT 1;
+
+# 11. Query the list of CITY names starting with vowels from STATION
+
+SELECT DISTINCT city
+FROM station
+WHERE city LIKE 'a%'
+    OR city LIKE 'e%'
+    OR city LIKE 'i%'
+    OR city LIKE 'o%'
+    OR city LIKE 'u%';
+    
+# 12. 
+
