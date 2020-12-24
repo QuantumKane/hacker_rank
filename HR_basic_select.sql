@@ -43,3 +43,14 @@ SELECT city, state
 FROM station;
 
 # 8. Query a list of CITY names from STATION for cities that have an even ID number
+
+SELECT DISTINCT city
+FROM station
+WHERE mod(id, 2) = 0;
+
+# 9. Find the difference between the total number of CITY entries in the table and the number of distinct CITY entries in the table
+
+SELECT COUNT(city) - COUNT(DISTINCT city)
+FROM station;
+
+# 10. 
