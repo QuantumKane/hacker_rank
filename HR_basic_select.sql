@@ -103,7 +103,23 @@ WHERE city NOT LIKE 'a%'
     
 # 15. Query the list of CITY names from STATION that do not end with vowels
 
+SELECT DISTINCT city
+FROM station
+WHERE city NOT LIKE '%a'
+    AND city NOT LIKE '%e'
+    AND city NOT LIKE '%i'
+    AND city NOT LIKE '%o'
+    AND city NOT LIKE '%u';
+    
+# 16. Query the list of CITY names from STATION that EITHER do not start with vowels OR do not end with vowels
 
+SELECT DISTINCT city
+FROM station 
+WHERE city REGEXP '^[^aeiou]|[^aeiou]$'
 
+# 17. Query the list of CITY names from STATION that do not start with vowels AND do not end with vowels
 
+SELECT DISTINCT city
+FROM station 
+WHERE city REGEXP '^[^aeiouAEIOU].*[^aeiouAEIOU]$'
 
