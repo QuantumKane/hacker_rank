@@ -157,3 +157,21 @@ FROM city, country
 WHERE city.countrycode = country.code
 GROUP BY country.continent
 
+# 23. Write a query identifying the type of each record in the TRIANGLES table using its three side lengths. 
+
+SELECT CASE             
+            WHEN A + B > C AND B + C > A AND A + C > B THEN
+                CASE 
+                    WHEN A = B AND B = C THEN 'Equilateral'
+                    WHEN A = B OR B = C OR A = C THEN 'Isosceles'
+                    ELSE 'Scalene'
+                END
+            ELSE 'Not A Triangle'
+        END
+FROM TRIANGLES;
+
+# 24. Query a count of the number of cities in CITY having a Population larger than 100000
+
+SELECT count(name)
+FROM city 
+WHERE population > 100000;
