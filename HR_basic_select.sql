@@ -123,6 +123,37 @@ SELECT DISTINCT city
 FROM station 
 WHERE city REGEXP '^[^aeiouAEIOU].*[^aeiouAEIOU]$'
 
-# 18. Query the Name of any student in STUDENTS who scored higher than  Marks. Order your output by the last three characters of each name
+# 18. Query the Name of any student in STUDENTS who scored higher than 75 Marks. Order your output by the last three characters of each name
 
-# This is my Christmas+ push
+SELECT name
+FROM students
+WHERE marks > 75
+ORDER BY RIGHT(name, 3), id ASC;
+
+# 19. Write a query that prints a list of employee names (i.e.: the name attribute) from the Employee table in alphabetical order. 
+
+SELECT name 
+FROM employee
+ORDER BY name; 
+
+# 20. Given the CITY and COUNTRY tables, query the sum of the populations of all cities where the CONTINENT is 'Asia'
+
+SELECT SUM(CITY.POPULATION) 
+FROM CITY, COUNTRY
+WHERE CITY.COUNTRYCODE = COUNTRY.CODE 
+    AND COUNTRY.CONTINENT = 'Asia';
+    
+# 21. Given the CITY and COUNTRY tables, query the names of all cities where the CONTINENT is 'Africa'.
+
+SELECT city.name
+FROM city, country
+WHERE city.countrycode = country.code
+    AND country.continent = 'Africa'
+    
+# 22. Given the CITY and COUNTRY tables, query the names of all the continents (COUNTRY.Continent) and their respective average city populations (CITY.Population)
+
+SELECT country.continent, FLOOR(AVG(city.population))
+FROM city, country
+WHERE city.countrycode = country.code
+GROUP BY country.continent
+
