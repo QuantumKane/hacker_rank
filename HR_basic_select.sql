@@ -193,3 +193,14 @@ WHERE district = 'California';
 SELECT FLOOR(AVG(population))
 FROM city;
 
+# 28. Query the sum of the populations for all Japanese cities in CITY.
+
+SELECT SUM(population)
+FROM city
+WHERE countrycode = 'JPN';
+
+# 29. Query the difference between the maximum and minimum populations in CITY
+
+SELECT (MAX(population) - MIN(population))
+FROM city;
+
