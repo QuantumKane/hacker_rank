@@ -175,3 +175,21 @@ FROM TRIANGLES;
 SELECT count(name)
 FROM city 
 WHERE population > 100000;
+
+# 25. Query the total population of all cities in CITY where District is California
+
+SELECT SUM(population) 
+FROM city
+WHERE district = 'California';
+
+# 26. Query the average population of all cities in CITY where District is California
+
+SELECT AVG(population) 
+FROM city
+WHERE district = 'California';
+
+# 27. Query the average population for all cities in CITY, rounded down to the integer
+
+SELECT FLOOR(AVG(population))
+FROM city;
+
