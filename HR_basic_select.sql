@@ -204,3 +204,29 @@ WHERE countrycode = 'JPN';
 SELECT (MAX(population) - MIN(population))
 FROM city;
 
+# 30. Write a query calculating the amount of error and round it up to the next integer.
+
+SELECT CEIL(AVG(salary) - AVG(REPLACE(salary,'0',''))) 
+FROM employees;
+
+# 31. Write a query to find the maximum total earnings for all employees as well as the total number of employees who have maximum total earnings.
+
+SELECT (salary * months) as earnings, COUNT(*) 
+FROM employee 
+GROUP BY 1 
+ORDER BY earnings DESC limit 1;
+
+# 32. Query the following two values from the STATION table:
+# The sum of all values in LAT_N rounded to a scale of  decimal places.
+# The sum of all values in LONG_W rounded to a scale of  decimal places.
+
+SELECT ROUND(SUM(lat_n), 2) as lat, 
+        ROUND(SUM(long_w), 2) as lon
+FROM station;
+
+# 33. Query the sum of Northern Latitudes (LAT_N) from STATION having values greater than 38.7880 and less than 137.2345. 
+
+SELECT ROUND(SUM(lat_n), 4)
+FROM station
+WHERE lat_n BETWEEN 38.7880 AND 137.2345;
+
