@@ -1,3 +1,5 @@
+# # Disclaimer: It should be noted that not every solution is my orginal work. The object here was to learn (sometimes by imitation), not to prove how clever I am...
+
 
 # 1. Query all columns for all American cities in the CITY table with populations larger than 100000
 
@@ -289,3 +291,16 @@ WHERE c.company_code = l.company_code
     AND m.manager_code = e.manager_code 
 GROUP BY c.company_code, c.founder 
 ORDER BY c.company_code;
+
+# 40. Write a query to find the node type of Binary Tree ordered by the value of the node.
+
+SELECT CASE
+    WHEN P IS NULL THEN CONCAT(N, ' Root')
+    WHEN N IN (SELECT DISTINCT P FROM BST) THEN CONCAT(N, ' Inner')
+    ELSE CONCAT(N, ' Leaf')
+    END
+FROM BST
+ORDER BY N;
+
+
+
