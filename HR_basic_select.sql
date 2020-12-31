@@ -244,10 +244,33 @@ WHERE lat_n < 137.2345
 ORDER BY lat_n DESC
 LIMIT 1;
 
-# 36.
+# 36. Query the smallest Northern Latitude (LAT_N) from STATION that is greater than 38.7780
 
 SELECT ROUND(lat_n, 4)
 FROM station
 WHERE lat_n > 38.7780
 ORDER BY lat_n ASC
 LIMIT 1;
+
+# 37. Query the Western Longitude where the smallest Northern Latitude (LAT_N) in STATION is greater than 38.7780
+
+SELECT ROUND(long_w, 4)
+FROM station
+WHERE lat_n > 38.7780
+ORDER BY lat_n ASC
+LIMIT 1;
+
+# 38. Query an alphabetically ordered list of all names in OCCUPATIONS, immediately followed by the first letter of each profession as a parenthetical. Query the number of ocurrences of each occupation in OCCUPATIONS. 
+
+SELECT CONCAT(name, CONCAT('(',LEFT(Occupation, 1),')'))
+FROM occupations 
+ORDER BY name; 
+
+SELECT CONCAT('There are a total of ',
+        COUNT(Occupation),
+        ' ', 
+        LOWER(Occupation),
+        's.')
+FROM occupations 
+GROUP BY Occupation 
+ORDER BY COUNT(Occupation); 
