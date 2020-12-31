@@ -230,3 +230,24 @@ SELECT ROUND(SUM(lat_n), 4)
 FROM station
 WHERE lat_n BETWEEN 38.7880 AND 137.2345;
 
+# 34. Query the greatest value of the Northern Latitudes (LAT_N) from STATION that is less than 137.2345.
+
+SELECT TRUNCATE(MAX(lat_n), 4)
+FROM station
+WHERE lat_n < 137.2345;
+
+# 35. Query the Western Longitude (LONG_W) for the largest Northern Latitude (LAT_N) in STATION that is less than 137.2345
+
+SELECT ROUND(long_w, 4)
+FROM station
+WHERE lat_n < 137.2345
+ORDER BY lat_n DESC
+LIMIT 1;
+
+# 36.
+
+SELECT ROUND(lat_n, 4)
+FROM station
+WHERE lat_n > 38.7780
+ORDER BY lat_n ASC
+LIMIT 1;
