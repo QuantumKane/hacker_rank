@@ -302,5 +302,5 @@ SELECT CASE
 FROM BST
 ORDER BY N;
 
-
+# 41. ot the Occupation column in OCCUPATIONS so that each Name is sorted alphabetically and displayed underneath its corresponding Occupation.
 
