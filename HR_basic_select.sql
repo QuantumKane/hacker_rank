@@ -320,9 +320,27 @@ FROM(
 ) Temp
 GROUP BY RowNumber
 
-# 42. 
+# 42. Write a query to help Eve
 
 SELECT IF(GRADE < 8, NULL, NAME), GRADE, MARKS
 FROM STUDENTS JOIN GRADES
 WHERE MARKS BETWEEN MIN_MARK AND MAX_MARK
 ORDER BY GRADE DESC, NAME
+
+# 43. Write a query to print the respective hacker_id and name of hackers who achieved full scores for more than one challenge
+
+SELECT h.hacker_id, h.name
+FROM submissions s
+    INNER JOIN challenges c
+        ON s.challenge_id = c.challenge_id
+    INNER JOIN difficulty d
+        ON c.difficulty_level = d.difficulty_level 
+    INNER JOIN hackers h
+        ON s.hacker_id = h.hacker_id
+WHERE s.score = d.score 
+    AND c.difficulty_level = d.difficulty_level
+GROUP BY h.hacker_id, h.name
+HAVING count(s.hacker_id) > 1
+ORDER BY count(s.hacker_id) DESC, s.hacker_id ASC;
+
+# 44. Write a query to print the id, age, coins_needed, and power of the wands that Ron's interested in, sorted in order of descending power
