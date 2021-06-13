@@ -1,4 +1,5 @@
-# # Disclaimer: It should be noted that not every solution is my orginal work. The object here was to learn (sometimes by imitation), not to prove how clever I am...
+## Disclaimer: It should be noted that not every solution is my orginal work.
+## The object here was to learn (sometimes by imitation), not to prove how clever I am...
 
 
 # 1. Query all columns for all American cities in the CITY table with populations larger than 100000
@@ -343,4 +344,17 @@ GROUP BY h.hacker_id, h.name
 HAVING count(s.hacker_id) > 1
 ORDER BY count(s.hacker_id) DESC, s.hacker_id ASC;
 
-# 44. Write a query to print the id, age, coins_needed, and power of the wands that Ron's interested in, sorted in order of descending power
+# 44. Write a query to print the id, age, coins_needed, and power of the wands that Ron is interested in, sorted in order of descending power
+
+SELECT w.id, p.age, w.coins_needed, w.power
+FROM wands w 
+    JOIN wands_property p ON (w.code = p.code)
+WHERE p.is_evil = 0
+    AND w.coins_needed = 
+    (SELECT MIN(coins_needed) 
+     FROM Wands AS w1 
+     JOIN Wands_Property AS p1 ON (w1.code = p1.code) 
+     WHERE w1.power = w.power 
+     AND p1.age = p.age)
+ORDER BY w.power DESC, p.age DESC;
+
